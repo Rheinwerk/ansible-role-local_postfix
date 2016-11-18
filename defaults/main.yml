@@ -2,7 +2,7 @@
 # defaults file for ansible-role-local_postfix
 
 _local_postfix:
-  relay_host: mail.example.com
+  relayhost: mail.example.com
   domain: domain.example.com
   aliases:
     root: []
