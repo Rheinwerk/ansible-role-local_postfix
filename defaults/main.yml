@@ -3,6 +3,7 @@
 
 _local_postfix:
   relay_host: mail.example.com
+  domain: domain.example.com
   aliases:
     root: []
     postmaster: [ root ]

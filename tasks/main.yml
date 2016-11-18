@@ -9,7 +9,7 @@
     - Restart postfix
 
 - name: Set /etc/mailname
-  shell: echo "{{ ansible_hostname }}.{{ domain }}" > /etc/mailname
+  shell: echo "{{ ansible_hostname }}.{{ _local_postfix.domain }}" > /etc/mailname
 
 - name: Ensure postfix service is running
   service: name=postfix state=started enabled=yes
