@@ -1,0 +1,25 @@
+# postfix for local mail delivery tasks
+---
+- name: Install postfix package
+  apt: pkg=postfix state=present
+
+- name: Create postfix configuration file
+  template: src=etc/postfix/main.cf.j2 dest=/etc/postfix/main.cf mode=0644 owner=root group=root
+  notify:
+    - Restart postfix
+
+- name: Set /etc/mailname
+  shell: echo "{{ ansible_hostname }}.{{ domain }}" > /etc/mailname
+
+- name: Ensure postfix service is running
+  service: name=postfix state=started enabled=yes
+
+- name: Create aliases
+  register: changed_aliases
+  template: src=etc/aliases.j2 dest=/etc/aliases mode=0644 owner=root group=root
+
+- name: Convert aliases
+  command: /usr/bin/newaliases
+  when: changed_aliases|changed
+  notify:
+    - Reload postfix

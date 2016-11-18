@@ -1,0 +1,12 @@
+# This file is managed by Ansible, all changes will be lost
+
+{% if postfix_aliases is defined %}
+{% set _dummy = _local_postfix.aliases.update(postfix_aliases) %}
+{% endif %}
+{% for alias, list in _local_postfix.aliases.iteritems() %}
+{% if list %}
+{{ "%-24s" | format(alias + ":") }} {{ list | join(", ") }}
+{% else %}
+{{ "%-24s" | format(alias + ":") }} {{ _local_postfix.alias_recipients | join(", ") }}
+{% endif %}
+{% endfor %}

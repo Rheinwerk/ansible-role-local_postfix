@@ -1,0 +1,11 @@
+---
+# defaults file for ansible-role-local_postfix
+
+_local_postfix:
+  relay_host: mail.example.com
+  aliases:
+    root: []
+    postmaster: [ root ]
+  alias_recipients:
+    - "nobdy@example.com"
+    - "else@example.com"
