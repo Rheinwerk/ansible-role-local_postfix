@@ -1,4 +1,5 @@
 # postfix for local mail delivery tasks
+# vim:ft=ansible:ts=2:et:
 ---
 - name: Install postfix package
   apt: pkg=postfix state=present
@@ -9,7 +10,7 @@
     - Restart postfix
 
 - name: Set /etc/mailname
-  shell: echo "{{ ansible_hostname }}.{{ _local_postfix.domain }}" > /etc/mailname
+  copy: content="{{ ansible_hostname }}.{{ _local_postfix.domain }}" dest=/etc/mailname owner=root group=root mode=0644
 
 - name: Ensure postfix service is running
   service: name=postfix state=started enabled=yes
