@@ -5,8 +5,8 @@ python:
   - "3.7"
   - "3.8"
 env:
-  - ANSIBLE_PIP='ansible>=2.8,<2.9'
-  - ANSIBLE_PIP='ansible>=2.9,<3.0'
+  - ANSIBLE_PIP='ansible==2.8.*'
+  - ANSIBLE_PIP='ansible==2.9.*'
 dist: bionic
 
 addons:
@@ -19,7 +19,7 @@ install:
   - pip install "$ANSIBLE_PIP"
   - pip install yamllint
 
-    # Check ansible version
+  # Check ansible version
   - ansible --version
 
     # Create ansible.cfg with correct roles_path
