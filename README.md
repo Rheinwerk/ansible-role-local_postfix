@@ -2,7 +2,7 @@ Configure Local Postfix for Forwarding
 =========
 
 
-[![Build Status](https://travis-ci.org/Rheinwerk/ansible-role-local_postfix.svg?branch=master)](https://travis-ci.org/Rheinwerk/ansible-role-local_postfix)
+[![Build Status](https://github.com/Rheinwerk/ansible-role-local_postfix/actions/workflows/ci.yml/badge.svg)](https://github.com/Rheinwerk/ansible-role-local_postfix/actions/workflows/ci.yml)
 
 Requirements
 ------------
